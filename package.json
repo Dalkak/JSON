@@ -1,6 +1,6 @@
 {
   "name": "@dalkak/json",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "source": "index.ts",
   "main": "dist/JSON.js",
   "module": "dist/JSON.mjs",
