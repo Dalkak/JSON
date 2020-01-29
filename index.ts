@@ -4,15 +4,54 @@ import {
 
 export default new Pack(
     new Dict, 
-    "Sample",
+    "JSON",
     {
-        log: new Block(
+        parse: new Block(
             new Dict, 
-            "log",
-            "(text) 찍기",
-            param => console.log(param.text),
-            {
-                text: Literal.from("안녕")
+            "parse",
+            "(json)해석하고 변수(val)에 담기",
+            (param, info) => {
+                var Entry = (info as {
+                    data
+                }).data.Entry;
+                if (!Entry.variableContainer.getVariableByName(param.val)) {
+                    Entry.variableContainer.appendVariables([{
+                        name: param.val
+                    }]);
+                }
+                Entry.variableContainer.getVariableByName(param.val).setValue(JSON.parse(param.json));
+            }
+        ),
+        get: new Block(
+            new Dict, 
+            "get",
+            "변수(input)의(propName)값 구하고 변수(val)에 담기",
+            (param, info) => {
+                var Entry = (info as {
+                    data
+                }).data.Entry;
+                if (!Entry.variableContainer.getVariableByName(param.val)) {
+                    Entry.variableContainer.appendVariables([{
+                        name: param.val
+                    }]);
+                }
+                Entry.variableContainer.getVariableByName(param.val).setValue(Entry.variableContainer.getVariableByName(param.input).getValue()[param.propName]);
+            }
+        ),
+        set: new Block(
+            new Dict, 
+            "set",
+            "변수(val)의(propName)값을(data)로 정하기",
+            (param, info) => {
+                var Entry = (info as {
+                    data
+                }).data.Entry;
+                if (!Entry.variableContainer.getVariableByName(param.val)) {
+                    Entry.variableContainer.appendVariables([{
+                        name: param.val
+                    }]);
+                }
+                Entry.variableContainer.getVariableByName(param.val).getValue()[param.propName] = param.data;
             }
         )
     }

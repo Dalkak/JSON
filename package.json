@@ -1,28 +1,28 @@
 {
-  "name": "@dalkak/sample",
+  "name": "@dalkak/json",
   "version": "0.0.3",
   "source": "index.ts",
-  "main": "dist/sample.js",
-  "module": "dist/sample.mjs",
-  "unpkg": "dist/sample.umd.js",
+  "main": "dist/JSON.js",
+  "module": "dist/JSON.mjs",
+  "unpkg": "dist/JSON.umd.js",
   "scripts": {
-    "build": "microbundle --name @dalkak/sample"
+    "build": "microbundle --name @dalkak/json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dalkak/sample.git"
+    "url": "git+https://github.com/Dalkak/JSON.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gnlow",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Dalkak/sample/issues"
+    "url": "https://github.com/Dalkak/JSON/issues"
   },
-  "homepage": "https://github.com/Dalkak/sample#readme",
+  "homepage": "https://github.com/Dalkak/JSON#readme",
   "description": "",
   "dependencies": {
     "@types/node": "^13.1.8",
-    "dalkak": "^0.6.4"
+    "dalkak": "^0.6.8"
   },
   "devDependencies": {
     "microbundle": "^0.12.0-next.7",
