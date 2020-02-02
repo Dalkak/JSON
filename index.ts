@@ -7,25 +7,23 @@ export default new Pack({
     blocks: {
         parse: new Block({
             name: "parse",
-            template: "(json) 해석하고 변수 (val)에 담기",
+            template: "((json) 해석하기)",
             func: (param, project) => {
                 var {
-                    json = "", 
-                    val = "변수"
+                    json = "",
                 } = {...param};
-                project.variables.value[val].value = JSON.parse(json);
+                return JSON.parse(json);
             }
         }),
         get: new Block({
             name: "get",
-            template: "변수 (input)의 (propName)값 구하고 변수 (val)에 담기",
+            template: "((input)의 (propName)값 구하기)",
             func: (param, project) => {
                 var {
                     input = "변수", 
-                    propName = "prop", 
-                    val = "변수"
+                    propName = "prop",
                 } = {...param};
-                project.variables.value[val].value = project.variables.value[input].value[propName]
+                return input[propName];
             }
         }),
         set: new Block({
