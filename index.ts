@@ -23,8 +23,8 @@ export default new Extension({
         set: new Block({
             name: "set",
             template: "변수 (val)의 (propName)값을 (data)로 정하기",
-            func: ({val, propName, data}, project) => {
-                project.variables.value[val].value[propName] = data;
+            func: ({val, propName, data}, project, local) => {
+                local.getVariable(val).value[propName] = data;
             }
         })
     }
