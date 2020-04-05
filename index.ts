@@ -1,9 +1,10 @@
 import {
-    Pack, Block, Literal, Type, Dict
+    Extension, Block,
 } from "dalkak";
 
-export default new Pack({
+export default new Extension({
     name: "JSON",
+    color: 0x525252,
     blocks: {
         parse: new Block({
             name: "parse",
